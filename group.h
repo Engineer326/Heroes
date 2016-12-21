@@ -1,10 +1,7 @@
 #ifndef GROUP
 #define GROUP
 
-#include "create_hero.h"
-#include <assert.h>
-#include <vector>
-
+#include "create.h"
 #include <assert.h>
 #include <vector>
 
@@ -56,34 +53,6 @@ public:
     }
 };
 
-/*class Group {
-public:
-    virtual int getStrength() = 0;
-    virtual void addToGroup( Group* group_) {assert(false); }
-    virtual ~Group() {}
-};
-
-class CompositeGroup: public Hero {
-private:
-    std::vector<Hero*> h;
-public:
-    int getStrength() {
-        int total = 0;
-        for ( auto i :  h ) {
-            total += i -> getStrength();
-        }
-        return total;
-    }
-    void addToGroup(Hero* heroes_) {
-        h.push_back( heroes_);
-    }
-    ~CompositeGroup() {
-        for ( auto i :  h ) {
-            delete i;
-        }
-    }
-};
-*/
 CompositeGroup* toRaid() {
     CompositeGroup* squad = new CompositeGroup;
     int amount = rand() % 5;
@@ -93,5 +62,6 @@ CompositeGroup* toRaid() {
     for (int i = 0; i < amount; i++ ) { squad -> addToGroup(new PriestS);}
     return squad;
 }
+
 #endif // GROUP
 

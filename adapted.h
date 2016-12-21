@@ -1,7 +1,7 @@
 #ifndef ADAPTED
 #define ADAPTED
 
-#include "create_hero.h"
+#include "create.h"
 #include "group.h"
 
 class FromMagicPower {
@@ -20,7 +20,6 @@ public:
 private:
     WizardS* wizard_;
 };
-
 
 #endif // ADAPTED
 

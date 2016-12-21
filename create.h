@@ -1,57 +1,60 @@
-#ifndef CREATE_H
-#define CREATE_H
-
-#endif // CREATE_H
+#ifndef CREATE
+#define CREATE
 
 #include <iostream>
+#include <assert.h>
 
-enum Character_id { Wizard, Warrior, Priest, Hunter, Warlock, Paladin };
-
-class Character {
-    public:
-    virtual void info();
-    virtual ~Character() {}
-    static Character* create(Character_id);
-};
-
-class Wizard: public Character {
+class Hero {
 public:
-    void info () {
-        std::cout << "You created a wizard! " << std::endl;
-    }
+    static Hero* create_hero(int id);
+    virtual void info() = 0;
+   // virtual int getStrength() = 0;
+    virtual void addToGroup(Hero* heroes_) {assert(false); }
+    virtual ~Hero() {}
 };
 
-class Warrior: public Character {
+class Wizard: public Hero {
 public:
-    void info () {
-        std::cout << "You created a Warrior! " << std::endl;
-    }
+    void info() { std::cout << "a wizard!" << std::endl; }
+    //int getStrength() { return 50; }
 };
 
-class Priest: public Character {
+class Warrior: public Hero {
 public:
-    void info () {
-        std::cout << "You created a Priest! " << std::endl;
-    }
+    void info() { std::cout << "a warrior!" << std::endl; }
+     //virtual int getStrength() { return 150; }
 };
 
-class Hunter: public Character {
+class Hunter: public Hero {
 public:
-    void info () {
-        std::cout << "You created a Hunter! " << std::endl;
-    }
+    void info() { std::cout << "a hunter!" << std::endl; }
+   //  virtual int getStrength() { return 100; }
 };
 
-class Warlock: public Character {
+class Priest: public Hero {
 public:
-    void info () {
-        std::cout << "You created a Warlock! " << std::endl;
-    }
+    void info() { std::cout << "a priest!" << std::endl; }
+     //virtual int getStrength() { return 50; }
 };
 
-class Paladin: public Character {
-public:
-    void info () {
-        std::cout << "You created a Paladin! " << std::endl;
+Hero* Hero::create_hero(int id) {
+    switch (id) {
+    case 1:
+        return new Wizard();
+        break;
+    case 2:
+        return new Warrior();
+        break;
+    case 3:
+        return new Hunter();
+        break;
+    case 4:
+        return new Priest();
+        break;
+    default:
+        break;
     }
-};
+}
+
+#endif // CREATE
+
